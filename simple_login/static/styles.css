@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700');
+
+
+/*! minireset.css v0.0.3 | MIT License | github.com/jgthms/minireset.css */
+/*! bulma.io v0.7.2 | MIT License | github.com/jgthms/bulma */
+
+html {
+    background-color: #f5f5f5;
+    color: #555;
+    font-family: open sans,sans-serif;
+    font-size: 16px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    box-sizing: border-box;
+}
+body,
+h1,
+h2,
+h3,
+html,
+p {
+    margin: 0;
+    padding: 0;
+}
+h1,
+h2,
+h3 {
+    font-size: 100%;
+    font-weight: 400;
+}
+button,
+input,
+select {
+    margin: 0;
+}
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+section {
+    display: block;
+}
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+a {
+    color: #3273dc;
+    cursor: pointer;
+    text-decoration: none;
+}
+a:hover {
+    color: #363636;
+}
+input[type="checkbox"] {
+    vertical-align: baseline;
+}
+.box:not(:last-child),
+.content:not(:last-child),
+.list:not(:last-child),
+.notification:not(:last-child),
+.subtitle:not(:last-child),
+.title:not(:last-child) {
+    margin-bottom: 2rem;
+}
+.button,
+.input,
+.select select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.25em;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: calc(0.625em - 1px);
+    padding-right: calc(0.625em - 1px);
+    padding-top: calc(0.375em - 1px);
+    position: relative;
+    vertical-align: top;
+}
+.has-text-centered {
+    text-align: center !important;
+}
+.is-block {
+    display: block !important;
+}
+.box {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    color: #4a4a4a;
+    display: block;
+    padding: 1.25rem;
+}
+a.box:focus,
+a.box:hover {
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px #3273dc;
+}
+a.box:active {
+    box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #3273dc;
+}
+.button {
+    background-color: #f0326b;
+    border-color: transparent;
+    color: white;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.375em - 1px);
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    padding-top: calc(0.375em - 1px);
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    width: 100%;
+}
+.button:hover {
+    background-color: #cc2a5b;
+}
+.button:focus:not(:active) {
+    box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+.button:active {
+    border-color: #4a4a4a;
+    color: #363636;
+}
+.container {
+    margin: 0 auto;
+    position: relative;
+}
+@media screen and (min-width: 1088px) {
+    .container {
+        max-width: 960px;
+        width: 960px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1152px;
+        width: 1152px;
+    }
+}
+@media screen and (min-width: 1472px) {
+    .container {
+        max-width: 1344px;
+        width: 1344px;
+    }
+}
+.input {
+    background-color: #fff;
+    border-color: #dbdbdb;
+    box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+    max-width: 100%;
+    width: 100%;
+}
+.input::-moz-placeholder,
+.input::-webkit-input-placeholder,
+.input:-moz-placeholder,
+.input:-ms-input-placeholder {
+    color: rgba(54, 54, 54, 0.3);
+}
+.input.is-hovered,
+.input:hover {
+    border-color: #b5b5b5;
+}
+.input.is-active,
+.input.is-focused,
+.input:active,
+.input:focus {
+    border-color: #3273dc;
+    box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+}
+.checkbox {
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.25;
+    position: relative;
+}
+.checkbox input {
+    cursor: pointer;
+}
+.checkbox:hover {
+    color: #363636;
+}
+.label {
+    color: #363636;
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.label:not(:last-child) {
+    margin-bottom: 0.5em;
+}
+.label.is-small {
+    font-size: 0.75rem;
+}
+.label.is-medium {
+    font-size: 1.25rem;
+}
+.label.is-large {
+    font-size: 1.5rem;
+}
+.field:not(:last-child) {
+    margin-bottom: 0.75rem;
+}
+.control {
+    clear: both;
+    font-size: 1rem;
+    position: relative;
+    text-align: left;
+}
+.notification {
+    border-radius: 4px;
+    padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+    position: relative;
+}
+.notification a:not(.button):not(.dropdown-item) {
+    text-decoration: underline;
+}
+.notification > .delete {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+.notification.is-danger {
+    background-color: #f0326b;
+    color: #fff;
+}
+.subtitle,
+.title {
+    word-break: break-word;
+}
+.title em,
+.title span {
+    font-weight: inherit;
+}
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.125;
+}
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+.subtitle:not(.is-spaced) + .title {
+    margin-top: -1.25rem;
+}
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+@media screen and (min-width: 769px), print {
+    .column.is-4,
+    .column.is-4-tablet {
+        flex: none;
+        width: 33.33333%;
+    }
+    .column.is-offset-4,
+    .column.is-offset-4-tablet {
+        margin-left: 33.33333%;
+    }
+}
+.section {
+    padding: 3rem 1.5rem;
+}
+@media screen and (min-width: 1088px) {
+    .section.is-large {
+        padding: 18rem 1.5rem;
+    }
+}
+
+/* Hero */
+.hero {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+@media screen and (min-width: 769px), print {
+    .hero-body {
+        padding-bottom: 18rem;
+        padding-top: 18rem;
+    }
+}
+.hero-body > .container,
+.hero-body > .container {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.hero-body {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 3rem 1.5rem;
+    align-items: center;
+    display: flex;
+}

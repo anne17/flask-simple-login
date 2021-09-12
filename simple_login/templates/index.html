@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}"/>
+    <link href="{{ url_for('static', filename='styles.css') }}" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                {% block content %}
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title">{{ title }}</h3>
+                    <div class="box">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="notification is-danger">
+                                {{ messages[0] }}
+                            </div>
+                        {% endif %}
+                        {% endwith %}
+                        <form method="POST" action="/login">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="password" name="password" placeholder="{{ password }}">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="checkbox">
+                                    <input type="checkbox">
+                                    {{ remember_me }}
+                                </label>
+                            </div>
+                            <button class="button is-block">{{ login_button }}</button>
+                        </form>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
