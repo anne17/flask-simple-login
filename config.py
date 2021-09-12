@@ -1,7 +1,7 @@
 """
-Default configuration for simple-login backend.
+Default configuration for simple-login.
 
-Can be overwritten with config.py in instance folder.
+Can be overridden with config.py in instance folder.
 """
 
 import datetime
@@ -20,11 +20,10 @@ HASHED_PASSWORD = "hashed password"
 
 LANGUAGE = "sv"
 
-MAIN_PAGES = {
-    "sv": "https://google.com",
-    "de": "https://google.com"
-    }
-
+SERVE_DIR = {
+    "sv": "/some/local/dir",
+    "de": "/some/local/dir"
+}
 
 TRANSLATIONS = {
     "page_title": {

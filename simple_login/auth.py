@@ -1,20 +1,34 @@
 """Routes related to user authentication."""
 
 from flask import Blueprint, current_app, flash, redirect, render_template, request, session, url_for
+from flask.helpers import send_from_directory
 from werkzeug.security import check_password_hash
 
 auth = Blueprint("auth", __name__)
 
 
-@auth.route("/")
-def index():
-    return redirect(url_for("auth.check_login"))
+from flask import Flask, send_from_directory
+app = Flask(__name__)
+
+
+@auth.route("/", defaults={"path": ""})
+@auth.route("/<path:path>")
+def index(path):
+    if session.get("authorized"):
+        current_app.logger.debug("Already authorized")
+        print()
+        print(get_serve_dir())
+        print(path)
+        print()
+        return send_from_directory(get_serve_dir(), path or "index.html")
+    # If not logged in, redirect to login page
+    return redirect(url_for("auth.login"))
 
 
 @auth.route("/login")
 def login():
     if session.get("authorized"):
-        return redirect(get_main_url())
+        return redirect(url_for("auth.index"))
     return render_template(
         "index.html",
         page_title = get_translation("page_title"),
@@ -33,7 +47,7 @@ def login_post():
         return check_password_hash(hashed_password, password)
     
     if session.get("authorized"):
-        return redirect(get_main_url())
+        return redirect(url_for("auth.index"))
     else:
         password = request.form.get("password")
         remember = True if request.form.get("remember") else False
@@ -44,22 +58,11 @@ def login_post():
             if not remember:
                 session.permanent = False
             current_app.logger.debug("Successful login")
-            return redirect(get_main_url())
+            return redirect(url_for("auth.index"))
         else:
             # If password is wrong, reload the page and show error message
             flash(get_translation("wrong_password"))
             return redirect(url_for("auth.login")) 
-
-
-@auth.route("/check-login")
-def check_login():
-    """Check if current user is authorized in the active session."""
-    if session.get("authorized"):
-        current_app.logger.debug("Successful login")
-        return redirect(get_main_url())
-    else:
-        # If not logged in, redirect to login page
-        return redirect(url_for("auth.login"))
 
 
 @auth.route("/logout")
@@ -76,8 +79,8 @@ def get_translation(key):
     return trans_dict.get(key, {}).get(lang, "")
 
 
-def get_main_url():
+def get_serve_dir():
     """Get the url to redirect to depending on the language."""
-    url_dict = current_app.config.get("MAIN_PAGES")
+    dir_dict = current_app.config.get("SERVE_DIR")
     lang = current_app.config.get("LANGUAGE")
-    return url_dict.get(lang, "")
+    return dir_dict.get(lang, "")
