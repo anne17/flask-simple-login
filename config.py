@@ -18,13 +18,23 @@ PERMANENT_SESSION_LIFETIME = datetime.timedelta(days=90)
 # Create with werkzeug.security.generate_password_hash
 HASHED_PASSWORD = "hashed password"
 
-LANGUAGE = "sv"
-
-SERVE_DIR = {
-    "sv": "/some/local/dir",
-    "de": "/some/local/dir"
+# Configurations for different hosts
+HOST_CONFIG = {
+    "strax.gift": {
+        "lang": "sv",
+        "prefix": "",
+        "dir": "/some/dir",
+    },
+    "kalufs.lol": {
+        "lang": "de",
+        "prefix": "some_prefix",
+        "dir": "/some/other/dir"
+    }
 }
 
+FALLBACK_LANG = "sv"
+
+# String translations
 TRANSLATIONS = {
     "page_title": {
         "sv": "Login",
