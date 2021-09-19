@@ -21,12 +21,12 @@ def create_app():
     # Set default config
     app.config.from_object("config")
 
-    # Overwrite with instance config
+    # Override with instance config
     instance_config = Path(app.instance_path) / "config.py"
     if instance_config.is_file():
         app.config.from_pyfile(instance_config)
 
-    # Set root path (parent dir to simplelogin package)
+    # Set root path (parent dir to simple_login package)
     app.config["ROOT_PATH"] = Path(app.root_path).parent.absolute()
 
     # Configure logger
@@ -36,8 +36,6 @@ def create_app():
     if app.config.get("DEBUG"):
         logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
                             format=logfmt, datefmt=datefmt)
-        # Stop peewee from spamming
-        logging.getLogger("peewee").setLevel(logging.INFO)
     else:
         today = time.strftime("%Y-%m-%d")
         logdir = Path(app.instance_path) / "logs"

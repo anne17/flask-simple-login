@@ -49,8 +49,10 @@ def login_post():
 
         if is_authenticated(password):
             session["authorized"] = True
-            # Make session expire when closing browser
-            if not remember:
+            # Make session permanent if user checked the box
+            if remember:
+                session.permanent = True
+            else:
                 session.permanent = False
             current_app.logger.debug("Successful login")
             return redirect(custom_url_for("auth.index"))
