@@ -22,15 +22,15 @@ def index(path):
 
 @auth.route("/login")
 def login():
+    """Handle login GET request."""
     if session.get("authorized"):
         return redirect(custom_url_for("auth.index"))
     return render_template(
         "index.html",
-        page_title = get_translation("page_title"),
-        title = get_translation("title"),
-        password = get_translation("password"),
-        remember_me = get_translation("remember_me"),
-        login_button = get_translation("login_button"),
+        page_title=get_translation("page_title"),
+        title=get_translation("title"),
+        password=get_translation("password"),
+        login_button=get_translation("login_button"),
         )
 
 
@@ -45,15 +45,10 @@ def login_post():
         return redirect(custom_url_for("auth.index"))
     else:
         password = request.form.get("password")
-        remember = True if request.form.get("remember") else False
 
         if is_authenticated(password):
             session["authorized"] = True
-            # Make session permanent if user checked the box
-            if remember:
-                session.permanent = True
-            else:
-                session.permanent = False
+            session.permanent = False
             current_app.logger.debug("Successful login")
             return redirect(custom_url_for("auth.index"))
         else:

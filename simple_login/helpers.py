@@ -28,3 +28,11 @@ def custom_url_for(url, filename=None):
     config = get_host_config()
     host_url = request.host_url.rstrip("/")
     return host_url + config.get("prefix", "") + url_for(url, filename=filename)
+
+
+def get_other_host():
+    """Get URL for the other host."""
+    host = request.host_url.split("/")[2]
+    for hostname, config in current_app.config.get("HOST_CONFIG").items():
+        if hostname != host:
+            return hostname + config.get("prefix")

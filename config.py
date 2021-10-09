@@ -8,12 +8,13 @@ import datetime
 
 DEBUG = True
 WSGI_HOST = "0.0.0.0"
-WSGI_PORT = 9005
+WSGI_PORT = 8083
 
 SECRET_KEY = "super secret key"
 SESSION_TYPE = "filesystem"
 SESSION_FILE_DIR = "instance/flask_session"
 PERMANENT_SESSION_LIFETIME = datetime.timedelta(days=90)
+# SESSION_COOKIE_HTTPONLY = False  # Make cookies accessible via javascript
 
 # Create with werkzeug.security.generate_password_hash
 HASHED_PASSWORD = "hashed password"
@@ -54,7 +55,7 @@ TRANSLATIONS = {
     },
     "login_button": {
         "sv": "Logga in",
-        "de": "Login"
+        "de": "Einloggen"
     },
     "wrong_password": {
         "sv": "Fel lösenord",
